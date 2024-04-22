@@ -1,0 +1,44 @@
+<div class="container bg-light p-4">
+  <div class="row">
+    <div class="col-7 m-auto">
+      <h1 class="text-center">Cadastro de Cursos</h1>
+      <form [formGroup]="courseFormGroup">
+        <div class="mb-3">
+          <label for="curso" class="form-label">Curso:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="curso"
+            formControlName="curso"
+          />
+        </div>
+
+        <button class="btn btn-primary" (click)="save()">Salvar</button>
+      </form>
+      <h1 class="text-center">Cursos</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Curso</th>
+            <th scope="col" class="text-end">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of courses">
+            <th scope="row">{{ course.id }}</th>
+            <td>{{ course.curso }}</td>
+            <td class="text-end">
+              <button class="btn btn-success me-2" (click)="update(course)">
+                Editar
+              </button>
+              <button class="btn btn-danger" (click)="delete(course)">
+                Excluir
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
