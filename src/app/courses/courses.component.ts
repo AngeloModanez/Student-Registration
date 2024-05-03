@@ -1,30 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { Courses } from '../courses';
+import { Course } from '../course';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { CoursesService } from '../course.service';
+import { CourseService as CourseService } from '../course.service';
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css',
 })
 export class CoursesComponent implements OnInit {
-  courses: Courses[] = [];
+  courses: Course[] = [];
   courseFormGroup: FormGroup;
   isEditing: boolean = false;
   submitted: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private service: CoursesService
+    private courseService: CourseService,
   ) {
     this.courseFormGroup = formBuilder.group({
       id: [''],
-      curso: [''],
+      name: [''],
     });
   }
 
   loadCourses() {
-    this.service.getCourses().subscribe({
+    this.courseService.getCourses().subscribe({
       next: (data) => (this.courses = data),
     });
   }
@@ -38,7 +38,7 @@ export class CoursesComponent implements OnInit {
 
     if (this.courseFormGroup.valid) {
       if (this.isEditing) {
-        this.service.update(this.courseFormGroup.value).subscribe({
+        this.courseService.update(this.courseFormGroup.value).subscribe({
           next: () => {
             this.loadCourses();
             this.courseFormGroup.reset();
@@ -47,7 +47,7 @@ export class CoursesComponent implements OnInit {
           },
         });
       } else {
-        this.service.save(this.courseFormGroup.value).subscribe({
+        this.courseService.save(this.courseFormGroup.value).subscribe({
           next: (data) => {
             this.courses.push(data);
             this.courseFormGroup.reset();
@@ -58,13 +58,13 @@ export class CoursesComponent implements OnInit {
     }
   }
 
-  delete(course: Courses) {
-    this.service.delete(course).subscribe({
+  delete(course: Course) {
+    this.courseService.delete(course).subscribe({
       next: () => this.loadCourses(),
     });
   }
 
-  update(course: Courses) {
+  update(course: Course) {
     this.isEditing = true;
     this.courseFormGroup.setValue(course);
   }

@@ -6,31 +6,24 @@
 
         <div class="mb-3">
           <label for="nome" class="form-label">Nome:</label>
-          <input type="text"
-                 class="form-control"
-                 id="nome"
-                 formControlName="name"
-                 />
+          <input type="text" class="form-control" id="nome" formControlName="name" />
           <small *ngIf="submitted && name.hasError('required')" class="text-danger">*O nome é requido!</small>
-          <small *ngIf="submitted && name.hasError('minlength')" class="text-danger">*O nome tem tamanho mínimo de 3 caracteres!</small>
+          <small *ngIf="submitted && name.hasError('minlength')" class="text-danger">*O nome tem tamanho mínimo de 3
+            caracteres!</small>
         </div>
 
 
         <div class="mb-3">
           <label for="curso" class="form-label">Curso:</label>
-          <input type="text"
-                 class="form-control"
-                 id="curso"
-                 formControlName="course"
-
-                 />
+          <select class="form-select" formControlName="course" [compareWith]="compareCourses">
+            <option *ngFor="let course of courses" [ngValue]="course">{{course.name}}</option>
+          </select>
           <small *ngIf="submitted && course.hasError('required')" class="text-danger">*O curso é requido!</small>
         </div>
 
 
-        <button class="btn btn-primary"
-                (click)="save()">
-                Salvar
+        <button class="btn btn-primary" (click)="save()">
+          Salvar
         </button>
       </form>
       <h1 class="text-center">Alunos</h1>
@@ -44,20 +37,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr  *ngFor="let student of students">
+          <tr *ngFor="let student of students">
             <th scope="row">{{student.id}}</th>
             <td>{{student.name}}</td>
-            <td>{{student.course}}</td>
+            <td>{{student.course.name}}</td>
             <td class="text-end">
-              <button class="btn btn-success me-2"
-                      (click)="update(student)"
-              >
+              <button class="btn btn-success me-2" (click)="update(student)">
                 Editar
               </button>
-              <button class="btn btn-danger"
-                      (click)="delete(student)"
-              >
-                  Excluir
+              <button class="btn btn-danger" (click)="delete(student)">
+                Excluir
               </button>
             </td>
           </tr>
@@ -67,4 +56,3 @@
     </div>
   </div>
 </div>
-

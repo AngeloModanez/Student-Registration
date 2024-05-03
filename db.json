@@ -1,0 +1,42 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Giuseppe Bruni",
+      "course": {
+        "id": 2,
+        "name": "Magia & Duendes"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Angelo Ferraz",
+      "course": {
+        "id": 1,
+        "name": "Computação"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Juliana",
+      "course": {
+        "id": 3,
+        "name": "Bruxaria"
+      }
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "name": "Computação"
+    },
+    {
+      "id": 2,
+      "name": "Magia & Duendes"
+    },
+    {
+      "id": 3,
+      "name": "Bruxaria"
+    }
+  ]
+}

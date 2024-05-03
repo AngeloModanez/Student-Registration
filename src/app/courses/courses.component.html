@@ -4,12 +4,12 @@
       <h1 class="text-center">Cadastro de Cursos</h1>
       <form [formGroup]="courseFormGroup">
         <div class="mb-3">
-          <label for="curso" class="form-label">Curso:</label>
+          <label for="name" class="form-label">Curso:</label>
           <input
             type="text"
             class="form-control"
-            id="curso"
-            formControlName="curso"
+            id="name"
+            formControlName="name"
           />
         </div>
 
@@ -27,7 +27,7 @@
         <tbody>
           <tr *ngFor="let course of courses">
             <th scope="row">{{ course.id }}</th>
-            <td>{{ course.curso }}</td>
+            <td>{{ course.name }}</td>
             <td class="text-end">
               <button class="btn btn-success me-2" (click)="update(course)">
                 Editar
