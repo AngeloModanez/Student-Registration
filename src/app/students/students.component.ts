@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../student';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CheckboxControlValueAccessor, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StudentService } from '../student.service';
 import { Course } from '../course';
 import { CourseService } from '../course.service';
@@ -21,12 +21,13 @@ export class StudentsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private studentService: StudentService,
     private courseService: CourseService
-
   ) {
     this.studentFormGroup = formBuilder.group({
       id: [''],
       name: ['', [Validators.minLength(3), Validators.required]],
       course: ['', [Validators.required]],
+      period: ['Diurno', 'Vespertino', 'Noturno'],
+      active: false,
     });
   }
 
@@ -38,7 +39,7 @@ export class StudentsComponent implements OnInit {
   loadCourses() {
     this.courseService.getCourses().subscribe({
       next: (data) => (this.courses = data),
-    })
+    });
   }
 
   loadStudents() {
@@ -48,7 +49,7 @@ export class StudentsComponent implements OnInit {
   }
 
   compareCourses(course1: Course, course2: Course): boolean {
-    return course1 && course2 ? course1.id === course2.id : course1 === course2
+    return course1 && course2 ? course1.id === course2.id : course1 === course2;
   }
 
   save() {

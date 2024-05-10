@@ -3,28 +3,92 @@
     <div class="col-7 m-auto">
       <h1 class="text-center">Cadastro de Alunos</h1>
       <form [formGroup]="studentFormGroup">
-
         <div class="mb-3">
           <label for="nome" class="form-label">Nome:</label>
-          <input type="text" class="form-control" id="nome" formControlName="name" />
-          <small *ngIf="submitted && name.hasError('required')" class="text-danger">*O nome é requido!</small>
-          <small *ngIf="submitted && name.hasError('minlength')" class="text-danger">*O nome tem tamanho mínimo de 3
-            caracteres!</small>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            formControlName="name"
+          />
+          <small
+            *ngIf="submitted && name.hasError('required')"
+            class="text-danger"
+            >*O nome é requido!</small
+          >
+          <small
+            *ngIf="submitted && name.hasError('minlength')"
+            class="text-danger"
+            >*O nome tem tamanho mínimo de 3 caracteres!</small
+          >
         </div>
-
-
         <div class="mb-3">
           <label for="curso" class="form-label">Curso:</label>
-          <select class="form-select" formControlName="course" [compareWith]="compareCourses">
-            <option *ngFor="let course of courses" [ngValue]="course">{{course.name}}</option>
+          <select
+            class="form-select"
+            formControlName="course"
+            [compareWith]="compareCourses"
+          >
+            <option *ngFor="let course of courses" [ngValue]="course">
+              {{ course.name }}
+            </option>
           </select>
-          <small *ngIf="submitted && course.hasError('required')" class="text-danger">*O curso é requido!</small>
+          <small
+            *ngIf="submitted && course.hasError('required')"
+            class="text-danger"
+            >*O curso é requido!</small
+          >
         </div>
 
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+          />
+          <label class="form-check-label" for="flexRadioDefault1">
+            Diurno
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault2"
+            checked
+          />
+          <label class="form-check-label" for="flexRadioDefault2">
+            Vespertino
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault2"
+            checked
+          />
+          <label class="form-check-label" for="flexRadioDefault3">
+            Noturno
+          </label>
+        </div>
 
-        <button class="btn btn-primary" (click)="save()">
-          Salvar
-        </button>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            Estudante Ativo
+          </label>
+        </div>
+
+        <button class="btn btn-primary" (click)="save()">Salvar</button>
       </form>
       <h1 class="text-center">Alunos</h1>
       <table class="table table-striped">
@@ -38,9 +102,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let student of students">
-            <th scope="row">{{student.id}}</th>
-            <td>{{student.name}}</td>
-            <td>{{student.course.name}}</td>
+            <th scope="row">{{ student.id }}</th>
+            <td>{{ student.name }}</td>
+            <td>{{ student.course.name }}</td>
             <td class="text-end">
               <button class="btn btn-success me-2" (click)="update(student)">
                 Editar
@@ -50,7 +114,6 @@
               </button>
             </td>
           </tr>
-
         </tbody>
       </table>
     </div>
