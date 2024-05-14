@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../student';
-import { CheckboxControlValueAccessor, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  CheckboxControlValueAccessor,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { StudentService } from '../student.service';
 import { Course } from '../course';
 import { CourseService } from '../course.service';
@@ -26,9 +31,9 @@ export class StudentsComponent implements OnInit {
       id: [''],
       name: ['', [Validators.minLength(3), Validators.required]],
       course: ['', [Validators.required]],
-      period: ['Diurno', 'Vespertino', 'Noturno'],
-      active: false,
-    });
+      period: [''],
+      active: [true],
+    }); 
   }
 
   ngOnInit(): void {

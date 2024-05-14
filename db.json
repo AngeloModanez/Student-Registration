@@ -2,27 +2,13 @@
   "students": [
     {
       "id": 1,
-      "name": "Giuseppe Bruni",
+      "name": "Boga",
       "course": {
         "id": 2,
         "name": "Magia & Duendes"
-      }
-    },
-    {
-      "id": 2,
-      "name": "Angelo Ferraz",
-      "course": {
-        "id": 1,
-        "name": "Computação"
-      }
-    },
-    {
-      "id": 3,
-      "name": "Juliana",
-      "course": {
-        "id": 3,
-        "name": "Bruxaria"
-      }
+      },
+      "period": "",
+      "active": true
     }
   ],
   "courses": [
@@ -37,6 +23,10 @@
     {
       "id": 3,
       "name": "Bruxaria"
+    },
+    {
+      "id": 4,
+      "name": "Meditação"
     }
   ]
 }
