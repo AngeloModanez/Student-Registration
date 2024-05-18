@@ -22,12 +22,14 @@ export class CoursesComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private courseService: CourseService,
-    private studentService: StudentService
+    private courseService: CourseService
   ) {
     this.courseFormGroup = formBuilder.group({
       id: [''],
       name: ['', [Validators.minLength(3), Validators.required]],
+      workload: ['', [Validators.required]],
+      image: [''],
+      active: [false],
     });
   }
 
@@ -38,12 +40,6 @@ export class CoursesComponent implements OnInit {
   loadCourses() {
     this.courseService.getCourses().subscribe({
       next: (data) => (this.courses = data),
-    });
-  }
-
-  loadStudents() {
-    this.studentService.getStudents().subscribe({
-      next: (data) => (this.students = data),
     });
   }
 
@@ -74,7 +70,7 @@ export class CoursesComponent implements OnInit {
 
   delete(course: Course) {
     this.courseService.delete(course).subscribe({
-      next: () => this.loadStudents(),
+      next: () => this.loadCourses(),
     });
   }
 

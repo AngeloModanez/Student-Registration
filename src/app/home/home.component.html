@@ -1,1 +1,20 @@
-<p>home works!</p>
+<div class="container bg-light p-4">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <span>
+      <div class="col">
+        <div class="card h-100">
+          <img src="{{ course.image }}" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">{{ course.name }}</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Alunos: {{ getStudents() }}</li>
+              <li class="list-group-item">
+                Carga Horária: {{ course.workload }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>

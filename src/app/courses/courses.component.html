@@ -25,7 +25,39 @@
           </small>
         </div>
 
-        <button class="btn btn-primary" (click)="save()">Salvar</button>
+        <div class="mb-3">
+          <label for="workload" class="form-label">Carga Horária:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="workload"
+            formControlName="workload"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label">Imagem:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="image"
+            formControlName="image"
+          />
+        </div>
+
+        <div class="mb-2">
+          <label class="form-check-label" for="active">Ativo:</label>
+          <input
+            class="form-check-input ms-2"
+            type="checkbox"
+            id="active"
+            formControlName="active"
+          />
+        </div>
+
+        <button class="btn btn-primary w-25 mb-3 mt-4 fs-5" (click)="save()">
+          Salvar
+        </button>
       </form>
       <h1 class="text-center">Cursos</h1>
       <table class="table table-striped">
@@ -33,6 +65,9 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Curso</th>
+            <th scope="col">Horário</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Foto</th>
             <th scope="col" class="text-end">Opções</th>
           </tr>
         </thead>
@@ -40,6 +75,21 @@
           <tr *ngFor="let course of courses">
             <th scope="row">{{ course.id }}</th>
             <td>{{ course.name }}</td>
+            <td>{{ course.workload }} Horas</td>
+            <td>
+              <span *ngIf="course.active" class="badge text-bg-primary"
+                >Ativo</span
+              >
+              <span *ngIf="!course.active" class="badge text-bg-secondary"
+                >Desativo</span
+              >
+            </td>
+            <td>
+              <img
+                style="width: 100px; height: 80px"
+                src="{{ course.image }}"
+              />
+            </td>
             <td class="text-end">
               <button class="btn btn-success me-2" (click)="update(course)">
                 Editar

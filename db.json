@@ -2,29 +2,22 @@
   "students": [
     {
       "id": 1,
-      "name": "Angelo",
-      "courseId": 3,
-      "period": "Vespertino",
+      "name": "Giuseppe",
+      "courseId": 4,
+      "period": "Noturno",
       "active": true
     },
     {
       "id": 2,
-      "name": "Juliana",
-      "courseId": 4,
+      "name": "Angelo",
+      "courseId": 2,
       "period": "Vespertino",
       "active": true
     },
     {
       "id": 3,
       "name": "Pedro",
-      "courseId": 1,
-      "period": "Noturno",
-      "active": null
-    },
-    {
-      "id": 4,
-      "name": "João",
-      "courseId": 2,
+      "courseId": 3,
       "period": "Diurno",
       "active": null
     }
@@ -32,19 +25,31 @@
   "courses": [
     {
       "id": 1,
-      "name": "Matemática "
+      "name": "ADM",
+      "workload": 200,
+      "image": "https://play-lh.googleusercontent.com/L8WrgwnLn6S2wyHnzRYMoVFCekbNtTUlox3R5vyuRXP8DhglzIsQdzoUn97-EUZzg0Nk",
+      "active": true
     },
     {
       "id": 2,
-      "name": "Filosofia"
+      "name": "ADS",
+      "workload": 490,
+      "image": "https://profitec.uema.br/wp-content/uploads/2023/06/Analise-e-Des_de_Sistemas.jpg",
+      "active": true
     },
     {
       "id": 3,
-      "name": "ADS"
+      "name": "Filosofia",
+      "workload": 100,
+      "image": "https://img.elo7.com.br/product/zoom/405389C/matriz-de-bordado-simbolo-filosofia-brasao-de-curso.jpg",
+      "active": false
     },
     {
       "id": 4,
-      "name": "ADM"
+      "name": "Magia & Duendes",
+      "workload": 900,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3Bc54_4Y8yDFldjNi0nmJ9K_vXi3fSLBV0yHJZqBrMw&s",
+      "active": true
     }
   ]
 }

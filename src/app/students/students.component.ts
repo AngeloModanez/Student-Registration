@@ -1,5 +1,4 @@
 import { Period } from './../period';
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../student';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
