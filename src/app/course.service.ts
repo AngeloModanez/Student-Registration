@@ -9,21 +9,25 @@ import { Course } from './course';
 export class CourseService {
   url = 'http://localhost:3000/courses';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(this.url);
   }
 
-  save(course: Course): Observable<Course> {
-    return this.http.post<Course>(this.url, course);
+  getCourse(id: number): Observable<Course> {
+    return this.http.get<Course>(`${this.url}/${id}`);
   }
 
-  delete(course: Course): Observable<void> {
-    return this.http.delete<void>(`${this.url}/${course.id}`);
+  save(student: Course): Observable<Course> {
+    return this.http.post<Course>(this.url, student);
   }
 
-  update(course: Course): Observable<Course> {
-    return this.http.put<Course>(`${this.url}/${course.id}`, course);
+  delete(student: Course): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${student.id}`);
+  }
+
+  update(student: Course): Observable<Course> {
+    return this.http.put<Course>(`${this.url}/${student.id}`, student);
   }
 }

@@ -23,13 +23,13 @@
           >
         </div>
         <div class="mb-3">
-          <label for="curso" class="form-label">Curso:</label>
+          <label for="curso" class="form-label">Curso</label>
           <select
             class="form-select"
-            formControlName="course"
+            formControlName="courseId"
             [compareWith]="compareCourses"
           >
-            <option *ngFor="let course of courses" [ngValue]="course">
+            <option *ngFor="let course of courses" [ngValue]="course.id">
               {{ course.name }}
             </option>
           </select>
@@ -40,68 +40,40 @@
           >
         </div>
 
-        <div class="m-1 row mb-3">
-          <div class="form-check col-7">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              formControlName="active"
-              id="flexCheckChecked"
-              autocomplete="off"
-              checked
-            />
-            <label class="form-check-label" for="flexCheckChecked">
-              Ativo
-            </label>
-          </div>
-
-          <div class="form-check col">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault1"
-               formControlName="period"
-              autocomplete="off"
-              value="Diurno"
-            />
-            <label class="form-check-label" for="flexRadioDefault1">
-              Diurno
-            </label>
-          </div>
-
-          <div class="form-check col">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault2"
-               formControlName="period"
-              autocomplete="off"
-              value="Vespertino"
-            />
-            <label class="form-check-label" for="flexRadioDefault2">
-              Vespertino
-            </label>
-          </div>
-
-          <div class="form-check col">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault3"
-               formControlName="period"
-              autocomplete="off"
-              value="Noturno"
-            />
-            <label class="form-check-label" for="flexRadioDefault3">
-              Noturno
-            </label>
-          </div>
+        <div class="mb-2">
+          <label class="form-check-label" for="active">Ativo:</label>
+          <input
+            class="form-check-input ms-2"
+            type="checkbox"
+            id="active"
+            formControlName="active"
+          />
         </div>
 
-        <button class="btn btn-primary w-25 mb-3 fs-5" (click)="save()">Salvar</button>
+        <div class="mb-4">
+          <div>
+            <label class="form-check-label me-1" for="active">Peíodos:</label>
+            <span *ngFor="let period of periods">
+              <input
+                class="ms-2 me-1"
+                type="radio"
+                [value]="period"
+                formControlName="period"
+              />
+              <label> {{ period }}</label>
+            </span>
+          </div>
+          <small
+            *ngIf="submitted && period.hasError('required')"
+            class="text-danger"
+          >
+            *O período é requirido!
+          </small>
+        </div>
+
+        <button class="btn btn-primary w-25 mb-3 fs-5" (click)="save()">
+          Salvar
+        </button>
       </form>
 
       <h1 class="text-center">Alunos</h1>
@@ -111,7 +83,7 @@
             <th scope="col">Matrícula</th>
             <th scope="col">Nome</th>
             <th scope="col">Curso</th>
-            <th scope="col">Periodo</th>
+            <th scope="col">Período</th>
             <th scope="col">Ativo</th>
             <th scope="col" class="text-end">Opções</th>
           </tr>
@@ -120,9 +92,16 @@
           <tr *ngFor="let student of students">
             <th scope="row">{{ student.id }}</th>
             <td>{{ student.name }}</td>
-            <td>{{ student.course.name }}</td>
+            <td>{{ getCourseName(student.courseId)?.name }}</td>
+            <td>
+              <span *ngIf="student.active" class="badge text-bg-primary"
+                >Ativo</span
+              >
+              <span *ngIf="!student.active" class="badge text-bg-secondary"
+                >Desativo</span
+              >
+            </td>
             <td>{{ student.period }}</td>
-            <td>{{ student.active }}</td>
             <td class="text-end">
               <button class="btn btn-success me-2" (click)="update(student)">
                 Editar

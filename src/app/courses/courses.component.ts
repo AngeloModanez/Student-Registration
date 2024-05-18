@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Student } from '../student';
 import { Course } from '../course';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { CourseService as CourseService } from '../course.service';
+import { Period } from '../period';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StudentService } from '../student.service';
+import { CourseService } from '../course.service';
+
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
@@ -9,6 +13,9 @@ import { CourseService as CourseService } from '../course.service';
 })
 export class CoursesComponent implements OnInit {
   courses: Course[] = [];
+  students: Student[] = [];
+  periods = Object.values(Period);
+
   courseFormGroup: FormGroup;
   isEditing: boolean = false;
   submitted: boolean = false;
@@ -16,11 +23,16 @@ export class CoursesComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private courseService: CourseService,
+    private studentService: StudentService
   ) {
     this.courseFormGroup = formBuilder.group({
       id: [''],
-      name: [''],
+      name: ['', [Validators.minLength(3), Validators.required]],
     });
+  }
+
+  ngOnInit(): void {
+    this.loadCourses();
   }
 
   loadCourses() {
@@ -29,8 +41,10 @@ export class CoursesComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.loadCourses();
+  loadStudents() {
+    this.studentService.getStudents().subscribe({
+      next: (data) => (this.students = data),
+    });
   }
 
   save() {
@@ -60,12 +74,20 @@ export class CoursesComponent implements OnInit {
 
   delete(course: Course) {
     this.courseService.delete(course).subscribe({
-      next: () => this.loadCourses(),
+      next: () => this.loadStudents(),
     });
   }
 
   update(course: Course) {
     this.isEditing = true;
     this.courseFormGroup.setValue(course);
+  }
+
+  getCourseName(courseId: number): Course | undefined {
+    return this.courses.find((c) => c.id === courseId);
+  }
+
+  get name(): any {
+    return this.courseFormGroup.get('name');
   }
 }

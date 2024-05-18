@@ -11,6 +11,18 @@
             id="name"
             formControlName="name"
           />
+          <small
+            *ngIf="submitted && name.hasError('required')"
+            class="text-danger"
+          >
+            *O curso é requirido!
+          </small>
+          <small
+            *ngIf="submitted && name.hasError('minlenght')"
+            class="text-danger"
+          >
+            *O curso tem tamanho mínimo de 3 caracteres!
+          </small>
         </div>
 
         <button class="btn btn-primary" (click)="save()">Salvar</button>

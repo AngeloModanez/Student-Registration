@@ -2,31 +2,49 @@
   "students": [
     {
       "id": 1,
-      "name": "Boga",
-      "course": {
-        "id": 2,
-        "name": "Magia & Duendes"
-      },
-      "period": "",
+      "name": "Angelo",
+      "courseId": 3,
+      "period": "Vespertino",
       "active": true
+    },
+    {
+      "id": 2,
+      "name": "Juliana",
+      "courseId": 4,
+      "period": "Vespertino",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Pedro",
+      "courseId": 1,
+      "period": "Noturno",
+      "active": null
+    },
+    {
+      "id": 4,
+      "name": "João",
+      "courseId": 2,
+      "period": "Diurno",
+      "active": null
     }
   ],
   "courses": [
     {
       "id": 1,
-      "name": "Computação"
+      "name": "Matemática "
     },
     {
       "id": 2,
-      "name": "Magia & Duendes"
+      "name": "Filosofia"
     },
     {
       "id": 3,
-      "name": "Bruxaria"
+      "name": "ADS"
     },
     {
       "id": 4,
-      "name": "Meditação"
+      "name": "ADM"
     }
   ]
 }
