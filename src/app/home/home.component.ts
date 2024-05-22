@@ -24,12 +24,15 @@ export class HomeComponent implements OnInit {
     private courseService: CourseService
   ) {
     this.homeFormGroup = formBuilder.group({
-      courseId: [''],
+      courseId: [],
       studentId: [''],
     })
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadCourses();
+    this.loadStudents();
+  }
 
   loadCourses() {
     this.courseService.getCourses().subscribe({
@@ -49,6 +52,10 @@ export class HomeComponent implements OnInit {
 
   getStudent(studentId: number): Student | undefined {
     return this.students.find((s) => s.id === studentId);
+  }
+
+  getCourseName(courseId: number): Course | undefined {
+    return this.courses.find(c => c.id === courseId);
   }
 
   get course(): any {
