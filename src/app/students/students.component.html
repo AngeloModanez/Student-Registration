@@ -5,68 +5,35 @@
       <form [formGroup]="studentFormGroup">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="nome"
-            formControlName="name"
-          />
-          <small
-            *ngIf="submitted && name.hasError('required')"
-            class="text-danger"
-            >*O nome é requido!</small
-          >
-          <small
-            *ngIf="submitted && name.hasError('minlength')"
-            class="text-danger"
-            >*O nome tem tamanho mínimo de 3 caracteres!</small
-          >
+          <input type="text" class="form-control" id="nome" formControlName="name" />
+          <small *ngIf="submitted && name.hasError('required')" class="text-danger">*O nome é requido!</small>
+          <small *ngIf="submitted && name.hasError('minlength')" class="text-danger">*O nome tem tamanho mínimo de 3
+            caracteres!</small>
         </div>
         <div class="mb-3">
           <label for="curso" class="form-label">Curso</label>
-          <select
-            class="form-select"
-            formControlName="courseId"
-            [compareWith]="compareCourses"
-          >
+          <select class="form-select" formControlName="courseId" [compareWith]="compareCourses">
             <option *ngFor="let course of courses" [ngValue]="course.id">
               {{ course.name }}
             </option>
           </select>
-          <small
-            *ngIf="submitted && course.hasError('required')"
-            class="text-danger"
-            >*O curso é requido!</small
-          >
+          <small *ngIf="submitted && course.hasError('required')" class="text-danger">*O curso é requido!</small>
         </div>
 
         <div class="mb-2">
           <label class="form-check-label" for="active">Ativo:</label>
-          <input
-            class="form-check-input ms-2"
-            type="checkbox"
-            id="active"
-            formControlName="active"
-          />
+          <input class="form-check-input ms-2" type="checkbox" id="active" formControlName="active" />
         </div>
 
         <div>
           <div>
             <label class="form-check-label me-1" for="active">Peíodos:</label>
             <span *ngFor="let period of periods">
-              <input
-                class="ms-2 me-1"
-                type="radio"
-                [value]="period"
-                formControlName="period"
-              />
+              <input class="ms-2 me-1" type="radio" [value]="period" formControlName="period" />
               <label> {{ period }}</label>
             </span>
           </div>
-          <small
-            *ngIf="submitted && period.hasError('required')"
-            class="text-danger"
-          >
+          <small *ngIf="submitted && period.hasError('required')" class="text-danger">
             *O período é requirido!
           </small>
         </div>
@@ -83,8 +50,8 @@
             <th scope="col">Matrícula</th>
             <th scope="col">Nome</th>
             <th scope="col">Curso</th>
-            <th scope="col">Período</th>
             <th scope="col">Aluno</th>
+            <th scope="col">Período</th>
             <th scope="col" class="text-end">Opções</th>
           </tr>
         </thead>
@@ -93,15 +60,12 @@
             <th scope="row">{{ student.id }}</th>
             <td>{{ student.name }}</td>
             <td>{{ getCourseName(student.courseId)?.name }}</td>
-            <td>
-              <span *ngIf="student.active" class="badge text-bg-primary"
-                >Ativo</span
-              >
-              <span *ngIf="!student.active" class="badge text-bg-secondary"
-                >Desativo</span
-              >
+
+            <td class="text-center">
+              <span *ngIf="student.active" class="badge text-bg-primary">Ativo</span>
+              <span *ngIf="!student.active" class="badge text-bg-secondary">Desativo</span>
             </td>
-            <td>{{ student.period }}</td>
+            <td class="text-center">{{ student.period }}</td>
             <td class="text-end">
               <button class="btn btn-success me-2" (click)="update(student)">
                 Editar

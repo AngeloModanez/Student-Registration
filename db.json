@@ -20,6 +20,34 @@
       "courseId": 3,
       "period": "Diurno",
       "active": null
+    },
+    {
+      "id": 4,
+      "name": "Rafael",
+      "courseId": 8,
+      "period": "Noturno",
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Yuyya",
+      "courseId": 5,
+      "period": "Diurno",
+      "active": null
+    },
+    {
+      "id": 6,
+      "name": "Pedrinho da XJ",
+      "courseId": 7,
+      "period": "Vespertino",
+      "active": true
+    },
+    {
+      "id": 7,
+      "name": "Juliana",
+      "courseId": 1,
+      "period": "Vespertino",
+      "active": true
     }
   ],
   "courses": [
@@ -49,6 +77,27 @@
       "name": "Magia & Duendes",
       "workload": 900,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3Bc54_4Y8yDFldjNi0nmJ9K_vXi3fSLBV0yHJZqBrMw&s",
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Meio Ambiente",
+      "workload": 24,
+      "image": "https://jna.ifmt.edu.br/media/filer_public_thumbnails/filer_public/ac/ee/acee150d-f103-4cc4-9834-dc9f1fde86ee/download.png__1000x0_q85_crop_subsampling-2.jpg",
+      "active": true
+    },
+    {
+      "id": 7,
+      "name": "Gastronomia",
+      "workload": 500,
+      "image": "https://img.imageboss.me/revista-cdn/cdn/25022/102ffafb377c109835894e3abc086702237091ea.jpg?1573769704",
+      "active": true
+    },
+    {
+      "id": 8,
+      "name": "Artesanato da Vovó",
+      "workload": 20,
+      "image": "https://juquitiba.sp.gov.br/wp-content/uploads/2023/08/363435060_672158848275797_4471451750855261537_n.jpg",
       "active": true
     }
   ]
