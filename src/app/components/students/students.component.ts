@@ -1,10 +1,10 @@
-import { Period } from './../period';
+import { Period } from '../../period';
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../student';
+import { Student } from '../../interfaces/student';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { StudentService } from '../student.service';
-import { CourseService } from '../course.service';
-import { Course } from '../course';
+import { StudentService } from '../../services/student.service';
+import { CourseService } from '../../services/course.service';
+import { Course } from '../../interfaces/course';
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',

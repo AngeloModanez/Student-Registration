@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../student';
-import { Course } from '../course';
-import { Period } from '../period';
+import { Student } from '../../interfaces/student';
+import { Course } from '../../interfaces/course';
+import { Period } from '../../period';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { StudentService } from '../student.service';
-import { CourseService } from '../course.service';
+import { StudentService } from '../../services/student.service';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-courses',

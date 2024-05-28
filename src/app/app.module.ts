@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { StudentsComponent } from './students/students.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { CoursesComponent } from './courses/courses.component';
-import { HomeComponent } from './home/home.component';
+import { StudentsComponent } from './components/students/students.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({

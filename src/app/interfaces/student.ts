@@ -1,5 +1,4 @@
-import { Course } from "./course";
-import { Period } from "./period";
+import { Period } from "../period";
 
 export interface Student {
   id: number;

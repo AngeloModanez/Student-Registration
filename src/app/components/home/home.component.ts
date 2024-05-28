@@ -1,9 +1,9 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from '../student.service';
-import { CourseService } from '../course.service';
-import { Student } from '../student';
-import { Course } from '../course';
+import { StudentService } from '../../services/student.service';
+import { CourseService } from '../../services/course.service';
+import { Student } from '../../interfaces/student';
+import { Course } from '../../interfaces/course';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     private courseService: CourseService
   ) {
     this.homeFormGroup = formBuilder.group({
-      courseId: [],
+      courseId: [''],
       studentId: [''],
     })
   }

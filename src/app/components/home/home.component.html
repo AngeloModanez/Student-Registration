@@ -1,0 +1,22 @@
+<div class="container bg-light p-3 mb-4">
+  <div class="row justify-content-center">
+    <form [formGroup]="homeFormGroup" class="d-flex flex-wrap justify-content-center w-100">
+      <span *ngFor="let course of courses" class="card-container text-center">
+        <div *ngIf="course.active">
+          <div class="card m-3">
+            <div class="card-body">
+              <div class="text-center">
+                <img src="{{course.image}}" class="card-img-top" style="width: 250px; height: 225px;" />
+              </div>
+              <h5 class="card-title fs-5 mt-2" style="font-weight: 900;">{{course.name}}</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Carga Horária: {{course.workload}}</li>
+                <li class="list-group-item">Total de Alunos: </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </span>
+    </form>
+  </div>
+</div>
