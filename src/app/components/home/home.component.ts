@@ -1,4 +1,3 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../services/student.service';
 import { CourseService } from '../../services/course.service';
@@ -11,27 +10,26 @@ import { Course } from '../../interfaces/course';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
+  studentsByCourse: Student[] = [];
   students: Student[] = [];
   courses: Course[] = [];
 
-  homeFormGroup: FormGroup;
-  isEditing: boolean = false;
-  submitted: boolean = false;
-
   constructor(
-    private formBuilder: FormBuilder,
     private studentService: StudentService,
     private courseService: CourseService
-  ) {
-    this.homeFormGroup = formBuilder.group({
-      courseId: [''],
-      studentId: [''],
-    })
-  }
+  ) {}
 
   ngOnInit(): void {
     this.loadCourses();
     this.loadStudents();
+
+    this.courses.forEach((course) => {
+      this.loadStudentsByCourse(course.id);
+    });
+
+    for (let course of this.courses) {
+      this.loadStudentsByCourse(course.id);
+    }
   }
 
   loadCourses() {
@@ -40,29 +38,15 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  loadStudentsByCourse(courseId: number) {
+    this.courseService.getStudentByCourse(courseId).subscribe({
+      next: (data) => (this.studentsByCourse.push(...data)),
+    });
+  }
+
   loadStudents() {
     this.studentService.getStudents().subscribe({
       next: (data) => (this.students = data),
     });
-  }
-
-  getCourse(courseId: number): Course | undefined {
-    return this.courses.find((c) => c.id === courseId);
-  }
-
-  getStudent(studentId: number): Student | undefined {
-    return this.students.find((s) => s.id === studentId);
-  }
-
-  getCourseName(courseId: number): Course | undefined {
-    return this.courses.find(c => c.id === courseId);
-  }
-
-  get course(): any {
-    return this.homeFormGroup.get('courseId');
-  }
-
-  get student(): any {
-    return this.homeFormGroup.get('studentId');
   }
 }

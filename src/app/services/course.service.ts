@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course } from '../interfaces/course';
+import { Student } from '../interfaces/student';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,11 @@ export class CourseService {
 
   getCourse(id: number): Observable<Course> {
     return this.http.get<Course>(`${this.url}/${id}`);
+  }
+
+  //http://localhost:3000/courses/1/students
+  getStudentByCourse (id: number): Observable<Student[]> {
+    return this.http.get<Student[]>(`${this.url}/${id}/students`);
   }
 
   save(student: Course): Observable<Course> {
